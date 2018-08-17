@@ -12,7 +12,17 @@ TF-TWAS is a set of tools to incorporate transcription factors (TFs) into gene i
 ```bash 
         bash ./pkg/TF-TWAS/script/tftwas.sh setup ./pkg/TF-TWAS/script/setup.sh
 ```
-4. Review the Inputs section below for file format required for TF-TWAS. (For impatient: refer to example/configs for three example configuration files.)
+4. Review the Inputs section below for file format required for TF-TWAS. 
+
+__For impatients__: refer to example/configs for three example configuration files. The following commands show how to construct TF-both model, TF-binding model and TF-regulation model using TF-TWAS.
+
+```bash
+
+$ bash tftwas.sh run_elasticnetCV_TF config_tf-both.R chr22
+$ bash tftwas.sh run_elasticnetCV_TF_window_zero config_tf-binding.R chr22
+$ bash tftwas.sh run_elasticnetCV_TF_window_zero config_tf-regulation.R chr22
+
+```
 
 
 __[Note]__
