@@ -2,7 +2,7 @@
 
 ### TF-TWAS is a set of tools to incorporate transcription factors (TFs) into gene imputation models (e.g., PrediXcan). By using TF-TWAS run_elasticnetCV utility, users can construct a gene imputation model with predictor variables that include both cis-SNPs within 1MB of gene and trans-SNPs within 1MB of TFs. On the contrary, the TF-TWAS run_elasticnetCV_TF_window_zero function is designed to use trans-SNPs only within the TF coding region along with the cis-SNPs within 1MB of gene.
 
-## Installation
+## ```Installation
 
 ### 1. Copy the TF-TWAS folder to a working directory (e.g., _./pkg_)
 
@@ -10,7 +10,7 @@
 
 ### 3. Set up the enviroment for running TF-TWAS by typing __bash ./pkg/TF-TWAS/script/tftwas.sh setup ./pkg/TF-TWAS/script/setup.sh__
 
-### 4. Execute __bash ./pkg/TF-TWAS/script/tftwas.sh run_example ./pkg/TF-TWAS/example/inputs/configs/config_TF-binding.R testRun__ to complete a test run
+### 4. Execute __bash ./pkg/TF-TWAS/script/tftwas.sh run_example ./pkg/TF-TWAS/example/inputs/configs/config_TF-binding.R testRun__ to complete a test run```
 
 
 __[Note]__
