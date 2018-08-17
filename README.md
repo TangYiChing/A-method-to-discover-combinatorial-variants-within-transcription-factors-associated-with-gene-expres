@@ -67,35 +67,35 @@ Type __bash tftwas.sh help__ to get the list of utilities available in TF-TWAS.
 
 TF-TWAS uses a configuration file to locate all the required files described below. 
 
-__expression_RDS__: file name string; n by m matrix stored in RDS format, where n is gene id and m is sample id.
+* __expression_RDS__: file name string; n by m matrix stored in RDS format, where n is gene id and m is sample id.
 
-__genotype_txt__: file name string; n by m matrix stored in txt format, where n sample id and m is varID.
+* __genotype_txt__: file name string; n by m matrix stored in txt format, where n sample id and m is varID.
 
-__gene_annot_RDS__: file name string; flat file saved in RDS format, columns include gene_id, start, end, genename
+* __gene_annot_RDS__: file name string; flat file saved in RDS format, columns include gene_id, start, end, genename
 
-__snp_annot_RDS__: file name string; flat file saved in RDS format, columns include varID
+* __snp_annot_RDS__: file name string; flat file saved in RDS format, columns include varID
 
-__tf_gene_annot_RDS__: file name string; flat file saved in RDS format, columns include 
+* __tf_gene_annot_RDS__: file name string; flat file saved in RDS format, columns include 
 
-__tf_genotype_dir__: directory name string; folder where 
+* __tf_genotype_dir__: directory name string; folder where genotype files (in txt format, file name separated by .) for TFs locate
 
-__tf_snp_annot_dir__: directory name string; folder where 
+* __tf_snp_annot_dir__: directory name string; folder where snp annotation files (in RDS format, file name separated by .) for TFs locate
 
-__study__: prefix string for output file (e.g., Test1).
+* __study__: prefix string for output file (e.g., Test1).
 
-__snpset__: prefix string for output file (e.g., Illumina).
+* __snpset__: prefix string for output file (e.g., Illumina).
 
-__chrom__: prefix string for output file (e.g., 1).
+* __chrom__: prefix string for output file (e.g., 1).
 
-__out_dir__: directory name string (e.g., ./).
+* __out_dir__: directory name string (e.g., ./).
 
-__n_k_folds__: integer; number of cross validation (e.g., 10).
+* __n_k_folds__: integer; number of cross validation (e.g., 10).
 
-__alpha__: float; number of penality for the Elastic-Net (e.g., 0.5)
+* __alpha__: float; number of penality for the Elastic-Net (e.g., 0.5)
 
-__window__: integrer or scientific notation; distance from gene (e.g., 1e6 for 1MB)
+* __window__: integrer or scientific notation; distance from gene (e.g., 1e6 for 1MB)
 
-__seed__: integer; number of seed for robust modeling (e.g., 1345)
+* __seed__: integer; number of seed for robust modeling (e.g., 1345)
 
 
 ## Outputs
