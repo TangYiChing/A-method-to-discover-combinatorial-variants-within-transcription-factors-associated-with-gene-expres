@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+
+# settings
+PY3_PATH="/data/anaconda3/bin/python3.6"
+R_PATH="/usr/bin/Rscript"
+MODEL_PATH="/data2/GTEx_v6/code/script/TFs_model_w_GTEx_Tissue_Wide_CV_elasticNet/TF-TWAS"

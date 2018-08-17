@@ -1,0 +1,211 @@
+###############################################################################
+##                                                                           ##
+##Functions                                                                  ##
+###############################################################################
+setting_env(){
+    # returns global variables
+
+    # required argument
+    setup_file=$1 # requires path to this file
+
+    # main
+    echo -e "::: Setting enviroment for TF-TWAS :::"
+    model_dir=`grep "^MODEL_PATH" $setup_file  |cut -d '=' -f2|tr -d '"'`
+    sed -i "2s|#source*|#source\nsource $setup_file|g" $model_dir"/script/tftwas.sh"
+    sed -i "2s|#source*|#source\n\nsource $setup_file|g" $model_dir"/script/util.sh"
+    #sed -i '4d' $model_dir"/script/tftwas.sh"
+
+    # return
+    echo -e "use python = $PY3_PATH"
+    echo -e "use R = $R_PATH"
+    echo -e "model locates at $MODEL_PATH"
+    echo -e "model scripts at $MODEL_PATH/SCRIPT_PATH"
+}
+
+display_helpmsg(){
+    # returns help information
+
+    # return
+    echo -e "::: Displaying help information :::"
+    echo -e "[USAGE] bash $0 run_elasticnetCV config.R prefix.str"
+    echo -e "[USAGE] bash $0 run_elasticnetCV_TF_window_zero config.R prefix.str"
+    echo -e "[USAGE] bash $0 run_tf_background config.R prefix.str num_times"
+    echo -e "[USAGE] bash $0 run_tf_background_window_zero config.R prefix.str num_times"
+    echo -e "[USAGE] bash $0 generate_x_matrix expression.txt genotype.vcf output_path.str"
+    echo -e "[USAGE] bash $0 generate_y_matrix expression.txt genotype.vcf output_path.str"
+    echo -e "[USAGE] bash $0 generate_gene_annot grc37.pos.txt expression.genelist.txt prefix.str output_path.str"
+    echo -e "[USAGE] bash $0 run_example config.R prefix.str"
+}
+
+
+create_runR(){
+
+  ###Return runTWCV_prefix.R
+  #
+  # config.R: a r script with configurations necessary for run elasticnetCV
+  # prefix: a string
+
+  # get args
+  config=$1
+  prefix=$2
+
+  # main
+  echo "" | tee  "./"$prefix".tmp.R"
+  cp $SCRIPT_PATH"/runTWCV_TF.R" "./runTWCV_TF_"$prefix".R" #$model_path"/script/runTWCV_TF_"$prefix".R"
+  echo -e "source('$SCRIPT_PATH/GTEx_Tissue_Wide_CV_elasticNet_TF.R')\nsource('$config')" | cat -  "./"$prefix".tmp.R" | tee  "./"$prefix".tmp.R"
+  cp "./runTWCV_TF_$prefix.R" "./"$prefix".run.R"
+  cat "./"$prefix".tmp.R" "./"$prefix".run.R" > "./runTWCV_TF_$prefix.R"
+  rm "./"$prefix".run.R" "./"$prefix".tmp.R"
+
+  # return
+  return_file="./runTWCV_TF_$prefix.R"
+  echo $return_file
+}
+
+
+create_runR_window_zero(){
+
+  ###Return runTWCV_prefix.R
+  #
+  # config.R: a r script with configurations necessary for run elasticnetCV
+  # prefix: a string
+
+  # get args
+  config=$1
+  prefix=$2
+
+  # main
+  echo "" | tee  "./"$prefix".tmp.R"
+  cp $SCRIPT_PATH"/runTWCV_TF.R" "./runTWCV_TF_"$prefix".R" #$model_path"/script/runTWCV_TF_"$prefix".R"
+  echo -e "source('$SCRIPT_PATH/GTEx_Tissue_Wide_CV_elasticNet_TF_window_zero.R')\nsource('$config')" | cat -  "./"$prefix".tmp.R" | tee  "./"$prefix".tmp.R"
+  cp "./runTWCV_TF_$prefix.R" "./"$prefix".run.R"
+  cat "./"$prefix".tmp.R" "./"$prefix".run.R" > "./runTWCV_TF_window_zero_$prefix.R"
+  rm "./"$prefix".run.R" "./"$prefix".tmp.R"
+
+  # return
+  return_file="./runTWCV_TF_window_zero_$prefix.R"
+  echo $return_file
+}
+
+
+run_elasticnetCV(){
+    # returns output files of ElasticNetCV modeling
+
+    # required arguments
+    config=$1  # config.R: a r script with configurations
+    prefix=$2
+
+    # main
+    returnFile=`create_runR $config $prefix` #generate runTWCV_prefix.R
+    runR=`echo $returnFile|cut -d " "  -f3`
+    $R_PATH $runR # run job
+
+    # returns
+    echo "$prefix, using $runR"
+}
+
+run_elasticnetCV_TF_window_zero(){
+    # returns output files of ElasticNetCV modeling
+
+    # required arguments
+    config=$1  #config.R: a r script with configurations
+    prefix=$2
+
+    # main
+    returnFile=`create_runR_window_zero $config $prefix` #generate runTWCV_prefix.R
+    runR=`echo $returnFile|cut -d " "  -f3`
+    $R_PATH $runR # run job
+
+    # returns
+    echo "$prefix, using $runR"
+}
+
+generate_x_matrix(){
+    # returns expression file (X matrix) and genotype file (y matrix) sharing with the same set of samples
+    #    expression: flat file, gene_id by sample_id (preferably corrected_reformatted_expression.txt)
+    #    genotype: vcf, the format complied with vcf4 format
+    #    #{Note] Required scikit-allel, the python package: https://scikit-allel.readthedocs.io/en/latest/
+    
+    # get args
+    expFile=$1
+    vcfFile=$2
+    outPath=$3
+    exp_filename=`basename $expFile .txt`
+    vcf_filename=`basename $vcfFile .vcf`
+    
+    # main
+    $PY3_PATH $SCRIPT_PATH"/generate_expression_genotype.py" $expFile $vcfFile $outPath
+    return_expFile=$outPath"/"$exp_filename".sharedsamples.txt"
+    return_genoFile=$outPath"/"$vcf_filename".sharedsamples.txt"
+
+    # return
+    echo $return_expFile,$return_genoFile
+}
+
+generate_y_matrix(){
+    # returns expression file (X matrix) and genotype file (y matrix) sharing with the same set of samples
+    #    expression: flat file, gene_id by sample_id (preferably corrected_reformatted_expression.txt)
+    #    genotype: vcf, the format complied with vcf4 format
+    #    {Note] Required scikit-allel, the python package: https://scikit-allel.readthedocs.io/en/latest/
+  
+    # get args
+    expFile=$1
+    vcfFile=$2
+    outPath=$3
+    exp_filename=`basename $expFile .txt`
+    vcf_filename=`basename $vcfFile .vcf`
+    # main
+    $PY3_PATH $SCRIPT_PATH"/generate_expression_genotype.py" $expFile $vcfFile $outPath
+    $R_PATH $SCRIPT_PATH"/RDS_to_TXT_trans.R" $outPath"/"$exp_filename".sharedsamples.txt" $outPath"/"$exp_filename".sharedsamples.RDS" 0
+    return_expFile=$outPath"/"$exp_filename".sharedsamples.txt"
+    return_genoFile=$outPath"/"$vcf_filename".sharedsamples.txt"
+    # return
+    echo $return_expFile,$return_genoFile
+}
+
+generate_gene_annot(){
+    # retruns a file of gene pos annotation
+    
+    #     posFile: a flat file (e.g., gene_pos_GRCh37.p13_mart_export.txt.gene_annot.txt)
+    #     genelist: a flat file
+   
+    # get args
+    posFile=$1
+    genelist=$2
+    prefix=$3
+    outPath=$4
+    data_filename=`basename $posFile .txt`
+    
+    # main
+    $PY3_PATH $SCRIPT_PATH"/subset_by_index.py" $posFile 1 $genelist 0 $outPath
+    mv $outPath"/"$data_filename".subset.txt" $outPath"/"$data_filename"."$prefix".txt"
+    return_subFile=$outPath"/"$data_filename"."$prefix".txt"
+    $R_PATH $SCRIPT_PATH"/RDS_to_TXT.R" $outPath"/"$data_filename"."$prefix".txt" $outPath"/"$data_filename"."$prefix".RDS" 0
+    
+    # return 
+    echo $return_subFile
+}
+
+check_file_extention(){
+    # returns T/F boolean string
+    fullfilename=$1
+    correct_ext=$2
+    filename=$(basename "$fullfilename")
+    ext="${filename##*.}"
+    if [[ $ext != $correct_ext ]]
+    then
+        echo -e "InputError: file type should be $correct_ext, given=$ext"
+        exit
+    fi
+}
+
+check_file_cols(){
+    #returns col string
+    file=$1
+    nth_col=$2
+    nth_row=$3
+    
+    str=`awk -v row=$nth_row -v col=$nth_col -F "\t" 'NR==row{print $col}' $file`
+    #echo -e "file=$file, nth_col=$nth_col, nth_row=$nth_row, str=$str"
+    echo $str
+}                        
