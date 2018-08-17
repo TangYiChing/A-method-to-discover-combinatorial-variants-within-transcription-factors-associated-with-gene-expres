@@ -4,22 +4,37 @@ TF-TWAS is a set of tools to incorporate transcription factors (TFs) into gene i
 
 ## Installation
 
-1. Copy the TF-TWAS folder to a working directory (e.g., _./pkg_)
+1. Copy the TF-TWAS folder to a working directory (e.g., _./pkg_).
 
-2. Open the _./pkg/TF-TWAS/script/setup.sh_ and edit the path accordingly 
+2. Open the _./pkg/TF-TWAS/script/setup.sh_ and edit the path accordingly. 
 
-3. Set up the enviroment for running TF-TWAS by typing __bash ./pkg/TF-TWAS/script/tftwas.sh setup ./pkg/TF-TWAS/script/setup.sh__
-
-4. Execute __bash ./pkg/TF-TWAS/script/tftwas.sh run_example ./pkg/TF-TWAS/example/inputs/configs/config_TF-binding.R testRun__ to complete a test run
+3. Set up the enviroment for running TF-TWAS by typing:
+```bash 
+        bash ./pkg/TF-TWAS/script/tftwas.sh setup ./pkg/TF-TWAS/script/setup.sh
+```
+4. Review the Inputs section below for file format required for TF-TWAS. (For impatient: refer to example/configs for three example configuration files.)
 
 
 __[Note]__
 TF-TWAS is a collection of R scripts unified by the main BASH shell script called tftwas.sh, but there are utilities require Python such as generate_x_matrix, generate_y_matrix and generate_gene_annot. A better computing environment for running TF-TWAS is: __GNU bash, version 4.2.46(2)-release__ (x86_64-redhat-linux-gnu), __R version 3.4.3__ (2017-11-30) -- "Kite-Eating Tree" and __Python 3.6.0__.
 
+## Dependicies
+
+R -- glmnet
+
+```R
+>>>install.packages("glmnet")
+```
+Python -- h5dy, scikit-allel
+
+```python
+$ conda install -c conda-forge scikit-allel
+$ conda install -c anaconda h5py 
+```
 
 ## Inputs
 
-TF-TWAS uses a configuration file to locate all the required files described below.
+TF-TWAS uses a configuration file to locate all the required files described below. 
 
 __expression_RDS__: file name string; n by m matrix stored in RDS format, where n is gene id and m is sample id.
 
@@ -54,7 +69,7 @@ __seed__: integer; number of seed for robust modeling (e.g., 1345)
 
 ## Outputs
 
-There are four output files, each of which has output prefix combined with string of "study" and chr"chrom" or "snpset". We used study="TFTWAS", chr"chrom"="chr22" and snpset="Illumina" as an example: 
+There are four output files, each of which has output prefix combined with string of "study" and chr"chrom" or "snpset". We used study="TFTWAS", chr"chrom"="chr22" and snpset="Illumina_chr22" as an example: 
 
 1. TFTWAS_chr22_elasticNet_model_log.txt: the log file for a job run, columns include __chr__, __n_genes__, __seed_for_cv__, __alpha__
 
