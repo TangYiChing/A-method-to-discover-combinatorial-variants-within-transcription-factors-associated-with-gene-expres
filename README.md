@@ -23,7 +23,7 @@ TF-TWAS is a collection of R scripts unified by the main BASH shell script calle
 R -- glmnet
 
 ```R
->>>install.packages("glmnet")
+>install.packages("glmnet")
 ```
 Python -- h5dy, scikit-allel
 
