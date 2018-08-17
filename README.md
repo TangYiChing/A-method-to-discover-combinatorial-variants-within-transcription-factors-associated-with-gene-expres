@@ -32,6 +32,27 @@ $ conda install -c conda-forge scikit-allel
 $ conda install -c anaconda h5py 
 ```
 
+## More utilities
+
+Type __bash tftwas.sh help__ to get the list of utilities available in TF-TWAS.
+
+[USAGE] bash tftwas.sh run_elasticnetCV config.R prefix.str
+
+[USAGE] bash tftwas.sh run_elasticnetCV_parallel config.R prefix.str splits.int
+
+[USAGE] bash tftwas.sh run_elasticnetCV_TF_window_zero config.R prefix.str
+
+[USAGE] bash tftwas.sh run_tf_background config.R prefix.str num_times
+
+[USAGE] bash tftwas.sh run_tf_background_window_zero config.R prefix.str num_times
+
+[USAGE] bash tftwas.sh generate_x_matrix expression.txt genotype.vcf output_path.str
+
+[USAGE] bash tftwas.sh generate_y_matrix expression.txt genotype.vcf output_path.str
+
+[USAGE] bash tftwas.sh generate_gene_annot grc37.pos.txt expression.genelist.txt prefix.str output_path.str
+
+
 ## Inputs
 
 TF-TWAS uses a configuration file to locate all the required files described below. 
@@ -80,22 +101,4 @@ There are four output files, each of which has output prefix combined with strin
 4. working_TW_TFTWAS_exp_10-foldCV_elasticNet_alpha0.5_Illumina_chr22_chr22.txt: gene-based modeling result, columns includes __gene__, __alpha__, __cvm__, __lambda.iteration__, __lambda.min__, __n.snps__, __R2__, __pval__, __genename__, __w_TF__, __pct_TF__, __total.snps__, __used_TF__
 
 
-## More utilities
 
-Type __bash tftwas.sh help__ to get the list of utilities available in TF-TWAS.
-
-[USAGE] bash tftwas.sh run_elasticnetCV config.R prefix.str
-
-[USAGE] bash tftwas.sh run_elasticnetCV_parallel config.R prefix.str splits.int
-
-[USAGE] bash tftwas.sh run_elasticnetCV_TF_window_zero config.R prefix.str
-
-[USAGE] bash tftwas.sh run_tf_background config.R prefix.str num_times
-
-[USAGE] bash tftwas.sh run_tf_background_window_zero config.R prefix.str num_times
-
-[USAGE] bash tftwas.sh generate_x_matrix expression.txt genotype.vcf output_path.str
-
-[USAGE] bash tftwas.sh generate_y_matrix expression.txt genotype.vcf output_path.str
-
-[USAGE] bash tftwas.sh generate_gene_annot grc37.pos.txt expression.genelist.txt prefix.str output_path.str
