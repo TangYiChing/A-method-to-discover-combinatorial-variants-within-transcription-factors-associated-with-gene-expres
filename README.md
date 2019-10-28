@@ -17,6 +17,7 @@ Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --c
 
 # Directory Structure and Naming Convention
 
+```bash
 .
 ├── script
 ├── data                            # Test files
@@ -31,7 +32,7 @@ Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --c
 │   └── annotation
 |   |   ├──
 └──...
-
+```
 
 # Reference
 
