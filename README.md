@@ -11,10 +11,13 @@ glmnet 2.0-18
 
 # Run 
 
+```R
 Rscript runBaselineModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --chr 22
 
+Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --chr 22 --model tf-regulation
 Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --chr 22 --model tf-binding
-
+Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --chr 22 --model tf-both
+```
 # Directory Structure and Naming Convention
 
 ```bash
@@ -30,7 +33,15 @@ Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --c
 |   |   ├──....
 |   |   ├── prefix.chr22.snp.txt
 │   └── annotation
-|   |   ├──
+|   |   ├──snp_annot
+|   |   |  ├──prefix.chr1.snp_annot.RDS
+|   |   |  ├──prefix.chr2.snp_annot.RDS
+|   |   |  ├──....
+|   |   |  ├──prefix.chr22.snp_annot.RDS
+|   |   ├──gene_annot
+|   |   |  ├──prefix.gene_annot.RDS
+|   |   ├──tf_gene_annot
+|   |   |  ├──prefix.tfgene_annot.RDS
 └──...
 ```
 
