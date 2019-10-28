@@ -1,4 +1,40 @@
-# TF-TWAS
+# TF-TWAS Workflow 
+
+
+# Requirements
+
+R version 3.5.0
+
+glmnet 2.0-18
+
+# Installation
+
+# Run 
+
+Rscript runBaselineModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --chr 22
+
+Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --chr 22 --model tf-binding
+
+# Directory Structure and Naming Convention
+
+.
+├── script
+├── data                            # Test files
+│   ├── expression          
+|   |   ├── prefix.expression.txt   # gene expression (gene*sample) 
+|   |   ├── prefix.expression.RDS   # gene expression (sample*gene, use to convert RDS)
+│   ├── genotype
+|   |   ├── prefix.chr1.snp.txt     # genotype (varID*sample)
+|   |   ├── prefix.chr2.snp.txt
+|   |   ├──....
+|   |   ├── prefix.chr22.snp.txt
+│   └── annotation
+|   |   ├──
+└──...
+
+
+# Reference
+
 
 TF-TWAS is a set of tools to incorporate transcription factors (TFs) into gene imputation models (e.g., PrediXcan). By using TF-TWAS __run_elasticnetCV__ utility, users can construct a gene imputation model with predictor variables that include both cis-SNPs within 1MB of gene and trans-SNPs within 1MB of TFs. On the contrary, the TF-TWAS __run_elasticnetCV_TF_window_zero__ function is designed to use trans-SNPs only within the TF coding region along with the cis-SNPs within 1MB of gene.
 
