@@ -12,11 +12,13 @@ glmnet 2.0-18
 # Run 
 
 ```R
+# step1. run the baseline model (change --chr to run other chromosomes)
 Rscript runBaselineModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --chr 22
 
-Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --chr 22 --model tf-regulation
-Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --chr 22 --model tf-binding
-Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --chr 22 --model tf-both
+# step2. run the TF models (change --chr to run other chromosomes)
+Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./TF-regulation/ --chr 22 --model tf-regulation
+Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./TF-binding/ --chr 22 --model tf-binding
+Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./TF-both/ --chr 22 --model tf-both
 ```
 # Directory Structure and Naming Convention
 
