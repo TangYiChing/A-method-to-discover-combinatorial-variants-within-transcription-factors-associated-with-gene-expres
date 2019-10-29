@@ -13,7 +13,7 @@ glmnet 2.0-18
 
 ```R
 # step1. run the baseline model (change --chr to run other chromosomes)
-Rscript runBaselineModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./ --chr 22
+Rscript runBaselineModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./baseline --chr 22
 
 # step2. run the TF models (change --chr to run other chromosomes)
 Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./TF-regulation/ --chr 22 --model tf-regulation
@@ -21,9 +21,9 @@ Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./TF-b
 Rscript runTFModel.R --scriptPth ./script/ --filePath ./data/ --outFolder ./TF-both/ --chr 22 --model tf-both
 
 # step3. parse results
-python ./script/parse_result.py --result_path ./TF-both/ --model_name baseline --out_prefix geuvadis
-python ./script/parse_result.py --result_path ./TF-both/ --model_name tf-regulation --out_prefix geuvadis
-python ./script/parse_result.py --result_path ./TF-both/ --model_name tf-binding --out_prefix geuvadis
+python ./script/parse_result.py --result_path ./baseline/ --model_name baseline --out_prefix geuvadis
+python ./script/parse_result.py --result_path ./TF-regulation/ --model_name tf-regulation --out_prefix geuvadis
+python ./script/parse_result.py --result_path ./TF-binding/ --model_name tf-binding --out_prefix geuvadis
 python ./script/parse_result.py --result_path ./TF-both/ --model_name tf-both --out_prefix geuvadis
 [Note] this step will generate result files from each model containing modeling result of chr1-chr22 (which is the output of step1.)
 
