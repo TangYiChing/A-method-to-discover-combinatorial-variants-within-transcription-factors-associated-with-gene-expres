@@ -12,7 +12,9 @@ glmnet 2.0-18 (R-version)
 
 # Installation
 
-# Run PartA of the workflow: identifying the outliers   
+# Run 
+
+## PartA of the workflow: identifying the outliers   
 
 ```R
 # step1. run the baseline model (change --chr to run other chromosomes)
