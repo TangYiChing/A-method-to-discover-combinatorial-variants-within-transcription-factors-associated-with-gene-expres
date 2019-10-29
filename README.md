@@ -5,7 +5,7 @@
 
 R version 3.5.0
 
-glmnet 2.0-18
+glmnet 2.0-18 (R-version)
 
 # Installation
 
