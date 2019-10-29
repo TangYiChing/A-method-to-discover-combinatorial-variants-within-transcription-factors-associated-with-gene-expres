@@ -28,14 +28,14 @@ python ./script/parse_result.py --result_path ./TF-both/ --model_name tf-both --
 [Note] this step will generate result files from each model containing modeling result of chr1-chr22 (which is the output of step1.)
 
 # step4. identify outliers by comparing R2 to the baseline model 
-python ./script/identify_outlier.py --tf_resultFile geuvadis.tf-regulation.result.txt \\
-                                    --bl_resultFile geuvadis.baseline.result.txt \\
+python ./script/identify_outlier.py --tf_resultFile geuvadis.tf-regulation.result.txt \
+                                    --bl_resultFile geuvadis.baseline.result.txt \
                                     --out_prefix geuvadis.tf-regulation
-python ./script/identify_outlier.py --tf_resultFile geuvadis.tf-binding.result.txt \\
-                                    --bl_resultFile geuvadis.baseline.result.txt \\
+python ./script/identify_outlier.py --tf_resultFile geuvadis.tf-binding.result.txt \
+                                    --bl_resultFile geuvadis.baseline.result.txt \
                                     --out_prefix geuvadis.tf-binding
-python ./script/identify_outlier.py --tf_resultFile geuvadis.tf-both.result.txt \\
-                                    --bl_resultFile geuvadis.baseline.result.txt \\ 
+python ./script/identify_outlier.py --tf_resultFile geuvadis.tf-both.result.txt \
+                                    --bl_resultFile geuvadis.baseline.result.txt \ 
                                     --out_prefix geuvadis.tf-both
 ```
 # Directory Structure and Naming Convention
