@@ -30,7 +30,6 @@ python ./script/parse_result.py --result_path ./baseline/ --model_name baseline 
 python ./script/parse_result.py --result_path ./TF-regulation/ --model_name tf-regulation --out_prefix geuvadis
 python ./script/parse_result.py --result_path ./TF-binding/ --model_name tf-binding --out_prefix geuvadis
 python ./script/parse_result.py --result_path ./TF-both/ --model_name tf-both --out_prefix geuvadis
-[Note] this step will generate result files from each model containing modeling result of chr1-chr22 (which is the output of step1.)
 
 # step4. identify outliers by comparing R2 to the baseline model 
 python ./script/identify_outlier.py --tf_resultFile geuvadis.tf-regulation.result.txt \
