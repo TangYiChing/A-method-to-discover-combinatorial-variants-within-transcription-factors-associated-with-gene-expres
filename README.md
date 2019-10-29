@@ -4,7 +4,9 @@
 
 # Requirements
 
-R version 3.5.0
+R       3.5.0
+
+python  3.6.8
 
 glmnet 2.0-18 (R-version)
 
