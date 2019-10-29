@@ -1,5 +1,6 @@
 # TF-TWAS Workflow 
 
+![Workflow](/Figures/Figure2.png)
 
 # Requirements
 
