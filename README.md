@@ -42,6 +42,14 @@ python ./script/identify_outlier.py --tf_resultFile geuvadis.tf-both.result.txt 
                                     --bl_resultFile geuvadis.baseline.result.txt \ 
                                     --out_prefix geuvadis.tf-both
 ```
+
+* PartB: verify hit genes
+
+```R
+step1: run background model by randomly selecting TFs (change --chr to run other chromosomes)
+Rscript ../../script/runBackgroundModel.R --scriptPth ../../script/ --filePath ../../  --outFolder ./ --out_prefix geuvadis -c 11 -m tf-binding -r 100
+Rscript ../../script/runBackgroundModel.R --scriptPth ../../script/ --filePath ../../ --out_prefix geuvadis --outFolder ./ -c 12 -m tf-binding -r 100
+```
 # Directory Structure and Naming Convention
 
 ```bash
