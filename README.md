@@ -46,9 +46,12 @@ python ./script/identify_outlier.py --tf_resultFile geuvadis.tf-both.result.txt 
 * PartB: testing randomness for outliers
 
 ```R
-#step1: run background model by randomly selecting TFs (change --chr to run other chromosomes)
-Rscript ./script/runBackgroundModel.R --scriptPth ./script/ --filePath ./data/  --outFolder ./TF-binding/backgroundmodel/ -c 11 -m tf-binding -r 100
+#step1: run background model by randomly selecting TFs (change --chr to run other chromosomes for the outliers)
+Rscript ./script/runBackgroundModel.R --scriptPth ./script/ --filePath ./data/  --filePrefix geuvadis --outFolder ./TF-binding/backgroundmodel/ -c 11 -m tf-binding -r 100
 
+Rscript ./script/runBackgroundModel.R --scriptPth ./script/ --filePath ./data/  --filePrefix geuvadis --outFolder ./TF-regulation/backgroundmodel/ -c 1 -m tf-regulation -r 100
+
+Rscript ./script/runBackgroundModel.R --scriptPth ./script/ --filePath ./data/  --filePrefix geuvadis --outFolder ./TF-both/backgroundmodel/ -c 21 -m tf-both -r 100
 ```
 # Directory Structure and Naming Convention
 
