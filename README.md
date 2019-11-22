@@ -52,7 +52,18 @@ Rscript ./script/runBackgroundModel.R --scriptPth ./script/ --filePath ./data/  
 Rscript ./script/runBackgroundModel.R --scriptPth ./script/ --filePath ./data/  --filePrefix geuvadis --outFolder ./TF-regulation/backgroundmodel/ -c 1 -m tf-regulation -r 100
 
 Rscript ./script/runBackgroundModel.R --scriptPth ./script/ --filePath ./data/  --filePrefix geuvadis --outFolder ./TF-both/backgroundmodel/ -c 21 -m tf-both -r 100
+
+#step2: parse background model results
+python ./script/parse_backgroundmodel_result.py --outlierFile ./results/geuvadis.tf-binding.43.outliers.txt --modelResultFile ./results/geuvadis.tf-binding.result.txt --bgfolder_path ./TF-binding/backgroundmodel/ --model_name tf-binding --out_prefix geuvadis
+
+ python ./script/parse_backgroundmodel_result.py --outlierFile ./results/geuvadis.tf-regulation.14.outliers.txt --modelResultFile   ./results/geuvadis.tf-regulation.result.txt --bgfolder_path ./TF-regulation/backgroundmodel/ --model_name tf-regulation --out_prefix geuvadis
+ 
+ python ./script/parse_backgroundmodel_result.py --outlierFile ./results/geuvadis.tf-both.3.outliers.txt --modelResultFile ./results/geuvadis.tf-both.result.txt --bgfolder_path ./TF-both/backgroundmodel/ --model_name tf-both --out_prefix geuvadis
 ```
+
+* PartC: testing roubustness of models by random selecting samples
+
+
 # Directory Structure and Naming Convention
 
 ```bash
