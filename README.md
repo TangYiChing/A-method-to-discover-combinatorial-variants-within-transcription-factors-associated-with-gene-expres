@@ -4,33 +4,33 @@ TF-TWAS is a set of tools for gene imputation using polymorphisms within transcr
 
 1. **TF-binding model**
 
-   predictors: polymorphisms within 1MB of gene, plus non-synonymous SNPs within associated TFs
+   * predictors: polymorphisms within 1MB of gene, plus non-synonymous SNPs within associated TFs
    
-   response variable: gene expression value
+   * response variable: gene expression value
    
-   training: 10 fold cross validation
+   * training: 10 fold cross validation
    
-   evaluation metrics: R2
+   * evaluation metrics: R2
    
 2. **TF-regulation model**
 
-   predictors: polymorphisms within 1MB of gene, plus tissue-specific eQTLs within associated TFs
+   * predictors: polymorphisms within 1MB of gene, plus tissue-specific eQTLs within associated TFs
    
-   response variable: gene expression value
+   * response variable: gene expression value
    
-   training: 10 fold cross validation
+   * training: 10 fold cross validation
    
-   evaluation metrics: R2
+   * evaluation metrics: R2
 
 3. **TF-both model**
 
-   predictors: polymorphisms within 1MB of gene, plus polymorphisms within 1MB of associated TFs
+   * predictors: polymorphisms within 1MB of gene, plus polymorphisms within 1MB of associated TFs
    
-   response variable: gene expression value
+   * response variable: gene expression value
    
-   training: 10 fold cross validation
+   * training: 10 fold cross validation
    
-   evaluation metrics: R2
+   * evaluation metrics: R2
 
 [Note] The baseline model was defined as imputation model that only use polymorphisms within 1MB of gene as predictors.
 
