@@ -8,6 +8,7 @@ TF-TWAS is a set of tools for gene imputation using polymorphism within transcri
 
 3. TF-both
 
+[Note] The baseline model was defined as 
 
 ![Workflow](/Figures/Figure2.png)
 
