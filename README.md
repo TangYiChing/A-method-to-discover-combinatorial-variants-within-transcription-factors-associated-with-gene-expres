@@ -120,10 +120,8 @@ TF-TWAS is a set of tools to incorporate transcription factors (TFs) into gene i
 
 
 
-__[Note]__
-TF-TWAS is a collection of R scripts unified by the main BASH shell script called tftwas.sh, but there are utilities require Python such as generate_x_matrix, generate_y_matrix and generate_gene_annot. A better computing environment for running TF-TWAS is: __GNU bash, version 4.2.46(2)-release__ (x86_64-redhat-linux-gnu), __R version 3.4.3__ (2017-11-30) -- "Kite-Eating Tree" and __Python 3.6.0__.
-
-
+__[Reference]__
+Gamazon ER, Wheeler HE, Shah KP, Mozaffari SV, Aquino-Michaels K, Carroll RJ, Eyler AE, Denny JC, Nicolae DL, Cox NJ. 2015. A gene-based association method for mapping traits using reference transcriptome data. Nature genetics 47: 1091-1098.
 
 
 
