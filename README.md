@@ -1,7 +1,12 @@
 # TF-TWAS Workflow 
 
-TF-TWAS is a set of tools to incorporate transcription factors (TFs) into gene imputation models (e.g., PrediXcan). By using TF-TWAS __run_elasticnetCV__ utility, users can construct a gene imputation model with predictor variables that include both cis-SNPs within 1MB of gene and trans-SNPs within 1MB of TFs. On the contrary, the TF-TWAS __run_elasticnetCV_TF_window_zero__ function is designed to use trans-SNPs only within the TF coding region along with the cis-SNPs within 1MB of gene.
+TF-TWAS is a set of tools for gene imputation using polymorphism within transcription factors (TFs), which were build upon PredictDB_Pipeline_GTEx Version 6. This workflow provides three models as described below: 
 
+1. TF-binding modle
+
+2. TF-regulation model
+
+3. TF-both
 
 
 ![Workflow](/Figures/Figure2.png)
