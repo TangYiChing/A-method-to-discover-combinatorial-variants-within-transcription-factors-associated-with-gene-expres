@@ -1,6 +1,6 @@
 # TF-TWAS Workflow 
 
-TF-TWAS is a set of tools for gene imputation using polymorphism within transcription factors (TFs), which were build upon PredictDB_Pipeline_GTEx Version 6. This workflow provides three models as described below: 
+TF-TWAS is a set of tools for gene imputation using polymorphism within transcription factors (TFs), which were build upon [PredictDB_Pipeline_GTEx Version 6](https://github.com/hakyimlab/PredictDB_Pipeline_GTEx_v7). This workflow provides three models as described below: 
 
 1. TF-binding modle
 
