@@ -63,7 +63,7 @@ python ./script/parse_backgroundmodel_result.py --outlierFile ./results/geuvadis
 
 * PartC: testing roubustness of models by random selecting samples
 
-```
+```R
 #step1. run random fold selection for baseline model and for TF models
 
 Rscript ./script/runRandomFoldSelection.R --scriptPth ./script/ --filePath ./data/ --filePrefix geuvadis --outFolder ./Baseline/randomFoldSelection/ -c 21 -m baseline -r 100
