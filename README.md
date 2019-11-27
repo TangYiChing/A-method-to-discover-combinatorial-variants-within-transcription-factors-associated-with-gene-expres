@@ -63,6 +63,30 @@ python ./script/parse_backgroundmodel_result.py --outlierFile ./results/geuvadis
 
 * PartC: testing roubustness of models by random selecting samples
 
+```
+#step1. run random fold selection for baseline model and for TF models
+
+Rscript ./script/runRandomFoldSelection.R --scriptPth ./script/ --filePath ./data/ --filePrefix geuvadis --outFolder ./Baseline/randomFoldSelection/ -c 21 -m baseline -r 100
+
+Rscript ./script/runRandomFoldSelection.R --scriptPth ./script/ --filePath ./data/ --filePrefix geuvadis --outFolder ./TF-binding/randomFoldSelection/ -c 21 -m tf-bining -r 100
+
+Rscript ./script/runRandomFoldSelection.R --scriptPth ./script/ --filePath ./data/ --filePrefix geuvadis --outFolder ./TF-regulation/randomFoldSelection/ -c 21 -m tf-regulation -r 100
+
+Rscript ./script/runRandomFoldSelection.R --scriptPth ./script/ --filePath ./data/ --filePrefix geuvadis --outFolder ./TF-both/randomFoldSelection/ -c 21 -m tf-both -r 100
+
+#setp2. parse random selection results
+
+python ../script/parse_randomSelection_result.py --outlierFile ./results/tf-binding.outliers.pass.backgroundmodel.txt 
+--baseline_resultFolder ./Baseline/randomFoldSelection --tfmodel_resultFolder ./TF-binding/randomFoldSelection --model_name tf-binding
+--threshold 0.01 --run 100 --out_prefix tf-binding
+
+python ../script/parse_randomSelection_result.py --outlierFile ./results/tf-regulation.outliers.pass.backgroundmodel.txt 
+--baseline_resultFolder ./Baseline/randomFoldSelection --tfmodel_resultFolder ./TF-regulation/randomFoldSelection --model_name tf-regulation --threshold 0.01 --run 100 --out_prefix tf-binding
+
+python ../script/parse_randomSelection_result.py --outlierFile ./results/tf-both.outliers.pass.backgroundmodel.txt 
+--baseline_resultFolder ./Baseline/randomFoldSelection --tfmodel_resultFolder ./TF-both/randomFoldSelection --model_name tf-both
+--threshold 0.01 --run 100 --out_prefix tf-both
+```
 
 # Directory Structure and Naming Convention
 
