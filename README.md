@@ -115,12 +115,6 @@ python ../script/parse_randomSelection_result.py --outlierFile ./results/tf-both
 
 # Reference
 
-
-TF-TWAS is a set of tools to incorporate transcription factors (TFs) into gene imputation models (e.g., PrediXcan). By using TF-TWAS __run_elasticnetCV__ utility, users can construct a gene imputation model with predictor variables that include both cis-SNPs within 1MB of gene and trans-SNPs within 1MB of TFs. On the contrary, the TF-TWAS __run_elasticnetCV_TF_window_zero__ function is designed to use trans-SNPs only within the TF coding region along with the cis-SNPs within 1MB of gene.
-
-
-
-__[Reference]__
 Gamazon ER, Wheeler HE, Shah KP, Mozaffari SV, Aquino-Michaels K, Carroll RJ, Eyler AE, Denny JC, Nicolae DL, Cox NJ. 2015. A gene-based association method for mapping traits using reference transcriptome data. Nature genetics 47: 1091-1098.
 
 
