@@ -2,13 +2,25 @@
 
 TF-TWAS is a set of tools for gene imputation using polymorphisms within transcription factors (TFs), which were built upon [PredictDB_Pipeline_GTEx Version 6](https://github.com/hakyimlab/PredictDB_Pipeline_GTEx_v7). This workflow provides three models as described below: 
 
-1. TF-binding modle
-
+1. TF-binding model
+   predictors: polymorphisms within 1MB of gene, plus non-synonymous SNPs within associated TFs
+   response variable: gene expression value
+   training: 10 fold cross validation
+   evaluation metrics: R2
+   
 2. TF-regulation model
+   predictors: polymorphisms within 1MB of gene, plus tissue-specific eQTLs within associated TFs
+   response variable: gene expression value
+   training: 10 fold cross validation
+   evaluation metrics: R2
 
-3. TF-both
+3. TF-both model
+   predictors: polymorphisms within 1MB of gene, plus polymorphisms within 1MB of associated TFs
+   response variable: gene expression value
+   training: 10 fold cross validation
+   evaluation metrics: R2
 
-[Note] The baseline model was defined as 
+[Note] The baseline model was defined as imputation model that only use polymorphisms within 1MB of gene as predictors.
 
 ![Workflow](/Figures/Figure2.png)
 
