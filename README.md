@@ -99,7 +99,7 @@ python ./script/parse_backgroundmodel_result.py --outlierFile ./results/geuvadis
 
 ```R
 #step1. run random fold selection for baseline model and for TF models
-Rscript ./script/runRandomFoldSelection.R --scriptPth ./script/ --filePath ./data/ --filePrefix geuvadis --outFolder ./Baseline/randomFoldSelection/ -c 21 -m baseline -r 100
+Rscript ./script/runBaselineModelRandomFoldeSelection.R --scriptPth ./script/ --filePath ./data/ --filePrefix geuvadis --outFolder ./Baseline/randomFoldSelection/ -c 21 -m baseline -r 100
 
 Rscript ./script/runRandomFoldSelection.R --scriptPth ./script/ --filePath ./data/ --filePrefix geuvadis --outFolder ./TF-binding/randomFoldSelection/ -c 21 -m tf-bining -r 100
 
