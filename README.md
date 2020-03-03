@@ -80,14 +80,21 @@ python ./script/identify_outlier.py --tf_resultFile geuvadis.tf-both.result.txt 
 * PartB: testing randomness for outliers
 
 ```R
-#step1: run background model by randomly selecting TFs (change --chr to run other chromosomes for the outliers)
+#step1: generate gene annotation for outliers
+python ./script/generate_gene_annot_for_outliergenes.py --outlier_file framingham.tf-binding.38.outliers.txt --genePos_file ../data/annotation/gene_annot/framingham.gene_annot.txt --out_prefix framingham.tf-binding
+
+python ./script/generate_gene_annot_for_outliergenes.py --outlier_file framingham.tf-regulation.2.outliers.txt --genePos_file ../data/annotation/gene_annot/framingham.gene_annot.txt --out_prefix framingham.tf-regulation
+
+python ./script/generate_gene_annot_for_outliergenes.py --outlier_file framingham.tf-both..outliers.txt --genePos_file ../data/annotation/gene_annot/framingham.gene_annot.txt --out_prefix framingham.tf-both
+
+#step2: run background model by randomly selecting TFs (change --chr to run other chromosomes for the outliers)
 Rscript ./script/runBackgroundModel.R --scriptPth ./script/ --filePath ./data/  --filePrefix geuvadis --outFolder ./TF-binding/backgroundmodel/ -c 11 -m tf-binding -r 100
 
 Rscript ./script/runBackgroundModel.R --scriptPth ./script/ --filePath ./data/  --filePrefix geuvadis --outFolder ./TF-regulation/backgroundmodel/ -c 1 -m tf-regulation -r 100
 
 Rscript ./script/runBackgroundModel.R --scriptPth ./script/ --filePath ./data/  --filePrefix geuvadis --outFolder ./TF-both/backgroundmodel/ -c 21 -m tf-both -r 100
 
-#step2: parse background model results
+#step3: parse background model results
 python ./script/parse_backgroundmodel_result.py --outlierFile ./results/geuvadis.tf-binding.43.outliers.txt --modelResultFile ./results/geuvadis.tf-binding.result.txt --bgfolder_path ./TF-binding/backgroundmodel/ --model_name tf-binding --out_prefix geuvadis
 
  python ./script/parse_backgroundmodel_result.py --outlierFile ./results/geuvadis.tf-regulation.14.outliers.txt --modelResultFile   ./results/geuvadis.tf-regulation.result.txt --bgfolder_path ./TF-regulation/backgroundmodel/ --model_name tf-regulation --out_prefix geuvadis
